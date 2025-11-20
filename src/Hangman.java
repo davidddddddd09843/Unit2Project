@@ -31,7 +31,6 @@ public class Hangman {
         myStringList.add("GIRAFFE");
         myStringList.add("SEAL");
         myStringList.add("CHEETAH");
-        String word = myStringList.get(new Random().nextInt(myStringList.size()));
         List<String> myStringList2 = new ArrayList<String>();
         myStringList2.add("JOHN");
         myStringList2.add("DAVID");
@@ -78,7 +77,12 @@ public class Hangman {
             System.out.println("Pick your category: ");
             String option2 = scan.nextLine();
         }
-        if ((option == "ANIMALS") )
+        if (option == "ANIMALS"){
+            String word = myStringList.get(new Random().nextInt(myStringList.size()));
+        }
+        else if (option == "NAMES"){
+            String word = myStringList2.get(new Random().nextInt(myStringList2.size()));
+        }
         String newString = "";
         String newStringLimited = limitString(newString, word.length());
         for (int i = 0; i < word.length(); i++){
