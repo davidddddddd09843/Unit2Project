@@ -3,9 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class Hangman {
-
 
     public static String limitString(String input, int maxInput){
         if (input.length() <= maxInput){
@@ -67,22 +65,32 @@ public class Hangman {
         System.out.println(" ");
         System.out.print("Pick your category (type \"SEE CATEGORIES\" to see categories): ");
         String option = scan.nextLine();
-        if (option == "SEE CATEGORIES"){
-            System.out.println("CATEGORIES: ");
-            System.out.println("-Animals");
-            System.out.println("-Countries");
-            System.out.println("-Food");
-            System.out.println("-Common Names");
+        String chosenCategory = option;
+        if (option.equals("SEE CATEGORIES")) {
             System.out.println(" ");
-            System.out.println("Pick your category: ");
-            String option2 = scan.nextLine();
+            System.out.println("CATEGORIES: ");
+            System.out.println(">ANIMALS");
+            System.out.println(">COUNTRIES");
+            System.out.println(">FOOD");
+            System.out.println(">COMMON NAMES");
+            System.out.println(" ");
+            System.out.print("Pick your category: ");
+            chosenCategory = scan.nextLine();
         }
-        if (option == "ANIMALS"){
-            String word = myStringList.get(new Random().nextInt(myStringList.size()));
+        String word = "";
+        if (chosenCategory.equals("ANIMALS")) {
+            word = myStringList.get(new Random().nextInt(myStringList.size()));
         }
-        else if (option == "NAMES"){
-            String word = myStringList2.get(new Random().nextInt(myStringList2.size()));
+        else if (chosenCategory.equals("COMMON NAMES")) {
+            word = myStringList2.get(new Random().nextInt(myStringList2.size()));
         }
+        else if (chosenCategory.equals("FOOD")) {
+            word = myStringList3.get(new Random().nextInt(myStringList3.size()));
+        }
+        else if (chosenCategory.equals("COUNTRIES")) {
+            word = myStringList4.get(new Random().nextInt(myStringList4.size()));
+        }
+        System.out.println(" ");
         String newString = "";
         String newStringLimited = limitString(newString, word.length());
         for (int i = 0; i < word.length(); i++){
